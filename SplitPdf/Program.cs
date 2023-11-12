@@ -20,6 +20,7 @@ class Program
         }
 
         pdfFilePath = pdfFilePath.Replace("\"", "");
+
         // Create a new directory with the same name as the PDF file
         var outputFolder = Path.Combine(Path.GetDirectoryName(pdfFilePath), Path.GetFileNameWithoutExtension(pdfFilePath));
         Console.WriteLine("Output folder: " + outputFolder);
@@ -75,7 +76,7 @@ class Program
                 {
                    outputPDFDocument.AddPage(pdfFile.Pages[page - 1]);
                 }
-                string fileName = $"{previousPageNumber} - {pageNumber}";
+                string fileName = $"{previousPageNumber +1} - {pageNumber}";
                 SaveOutputPDF(outputPDFDocument, fileName, outputFolder);
             }
             previousPageNumber = pageNumber;
